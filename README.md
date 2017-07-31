@@ -7,18 +7,21 @@ to trigger Hue lights to change and configure groups.
 
 ## setup
 To run the server you will need docker and docker compose then
-simply execute the following commands.
+simply execute the following tasks.
+
+First, manually press the "register" button on your Philips Hue base station,
+then quickly execute the following.
 ```
-#
-# Manually press the "register" button on your Philips Hue base station,
-# then quickly execute the following.
-#
 docker-compose up --build
 ```
 
 For subsequent restarts of the server, you should not have to press the base
 station register button and you can drop the `--build` or else it will
 rebuild the image every run and be slow to start up.
+
+## usage
+Once the server is running, you can navigate your browser to the
+following address. [http://0.0.0.0:9292](http://0.0.0.0:9292)
 
 ## configuration
 The server is configured using the [/config/westeros.yml](https://github.com/dbellotti/hue-controller/blob/master/config/westeros.yml)
