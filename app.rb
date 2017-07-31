@@ -5,7 +5,6 @@ require 'rack/flash'
 require 'hue'
 require 'json'
 require 'slim'
-require 'pry'
 
 
 class HueStation < Sinatra::Base
@@ -20,10 +19,16 @@ class HueStation < Sinatra::Base
 
     hue_client = Hue::Client.new
     group = hue_client.group
+
     # clean up old groups
-    hue_client.groups.select { |g| g.name == "Lord of Light" }.map { |g| g.destroy! }
+    hue_client.groups.select do |g|
+      g.name == "Lord of Light"
+    end.map { |g| g.destroy! }
+
     group.name = "Lord of Light"
-    group.lights = hue_client.lights.first(3)
+    group.lights = hue_client.lights.select do |light|
+      settings.lights.map { |light| light['name'] }.include?(light.name)
+    end
     group.create!
 
     set :hue_client, hue_client

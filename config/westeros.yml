@@ -5,6 +5,11 @@
 #blue   = { hue: 46920, saturation: 255, brightness: 255 }
 #purple = { hue: 55000, saturation: 255, brightness: 255 }
 
+lights:
+  - name: "Living Room 1"
+  - name: "Living Room 2"
+  - name: "Front Door"
+
 scenes:
   - name: "Castle Black"
     settings:
