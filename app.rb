@@ -6,6 +6,7 @@ require 'hue'
 require 'json'
 require 'slim'
 
+require './services/hue_configurator'
 
 class HueStation < Sinatra::Base
   register Sinatra::ConfigFile
@@ -17,29 +18,14 @@ class HueStation < Sinatra::Base
     enable :logging
     enable :sessions
 
-    hue_client = Hue::Client.new
-    group = hue_client.group
-
-    # clean up old groups
-    hue_client.groups.select do |g|
-      g.name == "Lord of Light"
-    end.map { |g| g.destroy! }
-
-    group.name = "Lord of Light"
-    group.lights = hue_client.lights.select do |light|
-      settings.lights.map { |light| light['name'] }.include?(light.name)
-    end
-    group.create!
-
-    set :hue_client, hue_client
-    set :hue_group, group
+    set :hue_configurator, HueConfigurator.new(settings)
     set :asset_version, Time.now.to_i
     set :public_folder, File.join(File.dirname(__FILE__), './public')
   end
 
   before do
-    @hue_client = settings.hue_client
-    @hue_group = settings.hue_group
+    @hue_client = settings.hue_configurator.hue_client
+    @hue_group = settings.hue_configurator.hue_group
     @asset_version = settings.asset_version
     @lighting_scenes = settings.scenes
   end
@@ -97,10 +83,7 @@ class HueStation < Sinatra::Base
   end
 
   get '/party_time' do
-    @hue_group.lights.each do |light|
-      light.hue = rand(Hue::Light::HUE_RANGE)
-      light.brightness = rand(Hue::Light::BRIGHTNESS_RANGE)
-    end
+    settings.hue_configurator.party_time
 
     redirect '/'
   end
