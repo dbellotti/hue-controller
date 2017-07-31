@@ -1,0 +1,46 @@
+div class="container"
+  div class="page-header"
+    h1 Game of Hues
+    p class="lead"
+      | Winter is here, but the Lord of Light is also here to deliver us from darkness.
+      br
+      | Use the skills bestowed upon you to fulfill your destiny and save us from winter.
+
+  div class="jumbotron locations"
+    - @lighting_scenes.each do |scene|
+      form class="select-scene" action="/select_scene" method="POST"
+        button name="scene" value=scene[:name] title=scene[:settings] type="submit" class="btn btn-lg" = scene[:name]
+
+  div class="main"
+  - if false
+    h2 Add Scene
+    form class="form-horizontal" action="/create_scene" method="POST"
+      div class="form-group"
+        label for="name" class="col-sm-4 control-label" Name
+        div class="col-sm-4"
+          input name="name" id="name" type="text" class="form-control" placeholder="Storms End"
+
+      - @hue_group.lights.each do |light|
+        div class="form-group"
+          label for="scenes[][name][#{light.name}]" class="col-sm-4 control-label" = "#{light.name} Hue"
+          div class="col-sm-4"
+            input name="scenes[][name][#{light.name}]" id="scenes[][name][#{light.name}]" type="text" class="form-control" placeholder="0 - 65535"
+
+        div class="form-group"
+          label for="saturation" class="col-sm-4 control-label" = "#{light.name} Saturation"
+          div class="col-sm-4"
+            input name="saturation" id="saturation" type="text" class="form-control" placeholder="0 - 255"
+
+        div class="form-group"
+          label for="brightness" class="col-sm-4 control-label" = "#{light.name} Brightness"
+          div class="col-sm-4"
+            input name="brightness" id="brightness" type="text" class="form-control" placeholder="0 - 255"
+
+        div class="form-group"
+          label for="transition_time" class="col-sm-4 control-label" = "#{light.name} Transition Time"
+          div class="col-sm-4"
+            input name="transition_time" id="transition_time" type="text" class="form-control" placeholder="5 (seconds)"
+
+      div class="form-group"
+        div class="col-sm-offset-4 col-sm-8"
+          button type="submit" class="btn btn-default" Create Scene

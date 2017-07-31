@@ -1,0 +1,36 @@
+body {
+  padding-top: 50px;
+}
+
+ul.nav .label {
+  line-height: 5;
+}
+
+.page-header {
+  padding: 20px 15px 10px;
+}
+
+.page-header > h1,
+.page-header > p,
+.locations > p {
+  text-align: center;
+}
+
+.jumbotron {
+  display: -webkit-flex;
+  display:         flex;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  flex-wrap: wrap;
+}
+
+form.select-scene {
+  margin: 10px;
+}
+
+.main {
+  margin: 20px 15px;
+}
+

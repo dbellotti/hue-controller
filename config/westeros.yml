@@ -1,0 +1,127 @@
+#red    = { hue: 0,     saturation: 255, brightness: 255 }
+#orange = { hue: 8500,  saturation: 255, brightness: 255 }
+#yellow = { hue: 17000, saturation: 255, brightness: 255 }
+#green  = { hue: 25500, saturation: 255, brightness: 255 }
+#blue   = { hue: 46920, saturation: 255, brightness: 255 }
+#purple = { hue: 55000, saturation: 255, brightness: 255 }
+
+scenes:
+  - name: "Castle Black"
+    settings:
+      - name: "Living Room 1"
+        hue: 48000
+        saturation: 200
+        brightness: 100
+        transition_time: 90
+      - name: "Living Room 2"
+        hue: 34000
+        saturation: 255
+        brightness: 100
+        transition_time: 70
+      - name: "Front Door"
+        hue: 34000
+        saturation: 255
+        brightness: 150
+        transition_time: 80
+  - name: "Winterfell"
+    settings:
+      - name: "Living Room 1"
+        hue: 46920
+        saturation: 0
+        brightness: 100
+        transition_time: 90
+      - name: "Living Room 2"
+        hue: 46920
+        saturation: 255
+        brightness: 100
+        transition_time: 70
+      - name: "Front Door"
+        hue: 46920
+        saturation: 155
+        brightness: 50
+        transition_time: 80
+  - name: "Kings Landing"
+    settings:
+      - name: "Living Room 1"
+        hue: 5000
+        saturation: 255
+        brightness: 255
+        transition_time: 80
+      - name: "Living Room 2"
+        hue: 17000
+        saturation: 200
+        brightness: 255
+        transition_time: 50
+      - name: "Front Door"
+        hue: 10000
+        saturation: 255
+        brightness: 125
+        transition_time: 70
+  - name: "Casterly Rock"
+    settings:
+      - name: "Living Room 1"
+        hue: 17000
+        saturation: 255
+        brightness: 255
+        transition_time: 50
+      - name: "Living Room 2"
+        hue: 0
+        saturation: 255
+        brightness: 155
+        transition_time: 90
+      - name: "Front Door"
+        hue: 20000
+        saturation: 255
+        brightness: 50
+        transition_time: 70
+  - name: "Highgarden"
+    settings:
+      - name: "Living Room 1"
+        hue: 46920
+        saturation: 255
+        brightness: 200
+        transition_time: 80
+      - name: "Living Room 2"
+        hue: 27000
+        saturation: 255
+        brightness: 200
+        transition_time: 50
+      - name: "Front Door"
+        hue: 20000
+        saturation: 255
+        brightness: 125
+        transition_time: 70
+  - name: "Riverrun"
+    settings:
+      - name: "Living Room 1"
+        hue: 0
+        saturation: 100
+        brightness: 100
+        transition_time: 80
+      - name: "Living Room 2"
+        hue: 34000 
+        saturation: 150
+        brightness: 100
+        transition_time: 50
+      - name: "Front Door"
+        hue: 50000
+        saturation: 155
+        brightness: 125
+        transition_time: 60
+  - name: "The Eyrie"
+    settings:
+      - name: "Living Room 1"
+        hue: 8000
+        saturation: 200
+        brightness: 200
+        transition_time: 80
+      - name: "Living Room 2"
+        hue: 50000
+        saturation: 100
+        brightness: 100
+        transition_time: 50
+      - name: "Front Door"
+        hue: 50000
+        saturation: 155
+        brightness: 125
+        transition_time: 70
