@@ -5,11 +5,13 @@ require 'rack/flash'
 require 'hue'
 require 'json'
 require 'slim'
+require 'rack/session/redis'
 
 require './services/hue_configurator'
 
 class HueStation < Sinatra::Base
   register Sinatra::ConfigFile
+  use Rack::Session::Redis, :redis_server => ENV['REDIS_URL']
   use Rack::Flash
 
   configure do
@@ -18,20 +20,24 @@ class HueStation < Sinatra::Base
     enable :logging
     enable :sessions
 
-    set :hue_configurator, HueConfigurator.new(settings)
     set :asset_version, Time.now.to_i
     set :public_folder, File.join(File.dirname(__FILE__), './public')
   end
 
   before do
-    @hue_client = settings.hue_configurator.hue_client
-    @hue_group = settings.hue_configurator.hue_group
     @asset_version = settings.asset_version
     @lighting_scenes = settings.scenes
   end
 
   get '/' do
     slim :index
+  end
+
+  post '/register_bridge' do
+    session[:lights] = HueConfigurator.new(settings.lights).lights
+
+    flash[:notice] = "Successfully registered with your Hue base station."
+    redirect '/'
   end
 
   post '/select_scene' do
@@ -44,10 +50,8 @@ class HueStation < Sinatra::Base
       end
     end
 
-    puts settings.inspect
-
     # set light from corresponding stored setting
-    @hue_group.lights.each do |light|
+    session[:lights].each do |light|
       setting = nil
 
       settings.select do |item|
@@ -83,7 +87,10 @@ class HueStation < Sinatra::Base
   end
 
   get '/party_time' do
-    settings.hue_configurator.party_time
+    session[:lights].each do |light|
+      light.hue = rand(Hue::Light::HUE_RANGE)
+      light.brightness = rand(Hue::Light::BRIGHTNESS_RANGE)
+    end
 
     redirect '/'
   end

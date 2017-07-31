@@ -8,5 +8,9 @@ services:
     ports:
       - "9292:9292"
     tty: true
-    stdin_open: true
-
+    links:
+      - redis
+    environment:
+      - REDIS_URL=redis://redis:6379
+  redis:
+    image: redis

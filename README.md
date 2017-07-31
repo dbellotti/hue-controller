@@ -5,18 +5,14 @@ viewing of HBO's Game of Thrones.
 This is a Sinatra server that uses [soffes/hue](https://github.com/soffes/hue) library
 to trigger Hue lights to change and configure groups.
 
-## setup
+## development
 To run the server you will need docker and docker compose then
-simply execute the following tasks.
-
-First, manually press the "register" button on your Philips Hue base station,
-then quickly execute the following.
+simply execute the following.
 ```
 docker-compose up --build
 ```
 
-For subsequent restarts of the server, you should not have to press the base
-station register button and you can drop the `--build` or else it will
+For subsequent restarts of the server, you can drop the `--build` or else it might
 rebuild the image every run and be slow to start up.
 
 ## usage

@@ -41,8 +41,9 @@ html lang="en"
           ul class="nav navbar-nav"
             li class="active"
               a href="#" Home
-            li
-              a href="/party_time" PartyTime
+            - if session[:lights]
+              li
+                a href="/party_time" PartyTime
             /li
               a href="/configure" Configure
             li
