@@ -1,0 +1,3 @@
+#! /bin/bash
+
+./bin/elm make src/elm/Main.elm --yes --output public/elm.js

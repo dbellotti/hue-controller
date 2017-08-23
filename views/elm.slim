@@ -1,0 +1,143 @@
+- content_for :head_javascript_include
+  script src="/jshue.js?v=#{@asset_version}"
+  /script src="/hue_controller.js?v=#{@asset_version}"
+  script src="/elm.js?v=#{@asset_version}"
+
+div class="elm-root"
+
+javascript:
+  var hue = jsHue();
+  var user;
+
+
+  // BIND ELM TO DOCUMENT
+
+  var elmApp = Elm.Main.embed(document.querySelector(".elm-root"), {
+      user: "",//"#{@user}",
+      bridge: "",//"#{@bridge}",
+  });
+
+
+  // RECEIVE ELM TRIGGER TO DETECT BRIDGES
+
+  elmApp.ports.getBridges.subscribe(function() {
+      hue.discover().then(bridges => {
+          if(bridges.length === 0) {
+              console.log('No bridges found. :(');
+          } else {
+              bridges.forEach(b => {
+                  console.log('Bridge ID %s found at IP address %s.', b.id, b.internalipaddress);
+                  renderBridgeButton(b);
+              });
+          }
+      }).catch(e => console.log('Error finding bridges', e));
+  });
+
+  var renderBridgeButton = function(bridge) {
+      element = document.querySelector(".register-button-group");
+
+      button = document.createElement("button");
+      button.setAttribute("class", "btn btn-lg btn-info");
+      button.setAttribute("onClick", "registerBridge('" + bridge.internalipaddress + "')");
+      button.textContent = "Register with Base Station";
+
+      element.appendChild(button);
+  };
+
+
+  var registerBridge = function(bridgeIP) {
+      var bridge = hue.bridge(bridgeIP);
+
+      // create user account (requires link button to be pressed)
+      bridge.createUser('LordofLights#browser').then(data => {
+          // extract bridge-generated username from returned data
+          var username = data[0].success.username;
+
+          console.log('New username: ', username);
+
+          // instantiate user object with username
+          user = bridge.user(username);
+
+          console.log("sending to elm => bridgeIP: ", bridgeIP);
+          //elmApp.ports.newBridge.send(bridgeIP);
+          console.log("sending to elm => username: ", username);
+          elmApp.ports.newUser.send(username);
+      });//.catch(e => console.log('Error registering bridge', e));
+  };
+
+
+  // RECONNECTING BRIDGE AND AUTHENTICATING USER
+
+  //elmApp.ports.connectBridge.subscribe(function(bridgeIP, username) {
+  //    user = hue.bridge(bridgeIP).user(username);
+  //});
+
+
+  // TRIGGER SCENE CHANGE
+
+  //elmApp.ports.triggerScene.subscribe(triggerScene);
+
+  var triggerScene = function() {
+        user.setLightState(8, { transitionTime: 10, sat: 255, bri: 128, hue: 0 }).then(data => {
+            // process response data, do other things
+            console.log('Response to setting light color %s', data);
+        });
+  };
+
+  elmApp.ports.triggerEpisode.subscribe(function(id) {
+      if ( id === "3" ) {
+        episode3();
+      } else if ( id === "4" ) {
+        episode4();
+      }
+  });
+
+
+  var episode3 = function() {
+      setTimeout(function () { triggerScene("The Eyrie");     }, 1000 * 0   );
+      setTimeout(function () { triggerScene("Castle Black");  }, 1000 * 600 );
+      setTimeout(function () { triggerScene("Castle Black");  }, 1000 * 990 );
+      setTimeout(function () { triggerScene("Highgarden");    }, 1000 * 1230);
+      setTimeout(function () { triggerScene("Casterly Rock"); }, 1000 * 1270);
+      setTimeout(function () { triggerScene("Casterly Rock"); }, 1000 * 1360);
+      setTimeout(function () { triggerScene("Torches");       }, 1000 * 1520);
+      setTimeout(function () { triggerScene("Torches");       }, 1000 * 1800);
+      setTimeout(function () { triggerScene("Riverrun");      }, 1000 * 1855);
+      setTimeout(function () { triggerScene("Highgarden");    }, 1000 * 2065);
+      setTimeout(function () { triggerScene("The Eyrie");     }, 1000 * 2300);
+      setTimeout(function () { triggerScene("Highgarden");    }, 1000 * 2425);
+      setTimeout(function () { triggerScene("Castle Black");  }, 1000 * 2520);
+      setTimeout(function () { triggerScene("Castle Black");  }, 1000 * 2730);
+      setTimeout(function () { triggerScene("Highgarden");    }, 1000 * 2850);
+      setTimeout(function () { triggerScene("The Eyrie");     }, 1000 * 3000);
+      setTimeout(function () { triggerScene("The Eyrie");     }, 1000 * 3110);
+      setTimeout(function () { triggerScene("Casterly Rock"); }, 1000 * 3170);
+      setTimeout(function () { triggerScene("The Eyrie");     }, 1000 * 3215);
+      setTimeout(function () { triggerScene("Torches");       }, 1000 * 3253);
+      setTimeout(function () { triggerScene("Highgarden");    }, 1000 * 3375);
+  };
+
+  var episode4 = function() {
+      setTimeout(function () { triggerScene("Highgarden");   }, 1000 * 0   );
+      setTimeout(function () { triggerScene("Kings Landing");}, 1000 * 600 );
+      setTimeout(function () { triggerScene("Torches");      }, 1000 * 990 );
+      setTimeout(function () { triggerScene("Castle Black"); }, 1000 * 1230);
+      setTimeout(function () { triggerScene("Torches");      }, 1000 * 1270);
+      setTimeout(function () { triggerScene("Dragonstone");  }, 1000 * 1360);
+      setTimeout(function () { triggerScene("Winterfell");   }, 1000 * 1520);
+      setTimeout(function () { triggerScene("Dragonstone");  }, 1000 * 1800);
+      setTimeout(function () { triggerScene("Torches");      }, 1000 * 1855);
+      setTimeout(function () { triggerScene("The Eyrie");    }, 1000 * 2065);
+      setTimeout(function () { triggerScene("Riverrun");     }, 1000 * 2300);
+      setTimeout(function () { triggerScene("Winterfell");   }, 1000 * 2425);
+      setTimeout(function () { triggerScene("Winterfell");   }, 1000 * 2520);
+      setTimeout(function () { triggerScene("Castle Black"); }, 1000 * 2730);
+      setTimeout(function () { triggerScene("Castle Black"); }, 1000 * 2850);
+      setTimeout(function () { triggerScene("The Eyrie");    }, 1000 * 3000);
+      setTimeout(function () { triggerScene("Castle Black"); }, 1000 * 3110);
+      setTimeout(function () { triggerScene("Highgarden");   }, 1000 * 3170);
+      setTimeout(function () { triggerScene("Riverrun");     }, 1000 * 3215);
+      setTimeout(function () { triggerScene("Riverrun");     }, 1000 * 3253);
+      setTimeout(function () { triggerScene("Highgarden");   }, 1000 * 3375);
+  };
+
