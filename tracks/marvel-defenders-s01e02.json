@@ -1,0 +1,64 @@
+{
+  "entries": [
+    {
+      "start_time": "00:00",
+      "end_time": "10:00",
+      "lights": [{
+        "name": "L1",
+        "hue": 150,
+        "bri": 140,
+        "sat": 100
+      }, {
+        "name": "L2",
+        "hue": 150,
+        "bri": 140,
+        "sat": 100
+      }]
+    }
+  ]
+}
+
+EFFECT
+time | effect | duration (sec) | loop
+
+
+ENTRY
+time | colors | saturation | brightness | transition time
+
+00:00  |  red green orange            |      255    |    100   |    2000  |  sirens  blue  red
+01:00  |
+02:38  |  INTRO
+
+06:18  |  blue white lightgreen       |      100    |    155   |    3000
+06:30  |  flash                       |      30000
+07:40  |  throb                       |      15000
+11:00  |  white lightbrown
+12:20  |  gold lightbrown lightgreen  |      200    |    140   |    1500
+14:13  |  white lightblue lightbrown  |      150    |    150   |    1500
+16:15  |  darken                      |      10%
+17:35  |  white lightblue             |      150    |    130   |    3000
+18:30  |  darken                      |      10%
+19:45  |  red gold white              |      255    |    170   |    3000
+23:00  |  blue purple white           |      180    |    150   |    2000
+24:45  |  flashes yellow orange       |      2000
+24:45  |  gold orange white           |      255    |    130   |    5000
+27:00  |  yellow lightgreen white     |      200    |    100   |    1000
+27:30  |  flicker yellow              |      5000
+28:30  |  sat         20
+27:30  |  darken      10%
+30:28  |  gold white                  |      255    |    70    |    3000
+30:28  |  flickering
+31:30  |  blue white orange           |      220    |    130   |    2000
+32:27  |  lightblue white             |      220    |    120   |    2000
+33:15  |  fog lightgreen blue white
+35:55  |  flashes white               |      5000
+38:55  |  flashes yellow
+39:20  |  throb gold
+39:50  |  flashes blue red            |      30000
+41:00  |  white blue                  |      255    |      130
+42:40  |  blackout                    |      2000
+43:00  |  red gold                    |      200    |      130  |   3
+
+
+INTRO
+

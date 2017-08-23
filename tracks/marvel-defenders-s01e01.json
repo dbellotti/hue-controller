@@ -1,0 +1,44 @@
+{
+  "times": [
+    {
+      "start_time": "00:00:00.000",
+      "end_time": "00:00:10.000",
+      "hue": "lightblue",
+      "sat": 
+      "lights": [{
+        "name": "L1",
+        "hue": 150,
+        "bri": 140,
+        "sat": 100
+      }, {
+      }]
+    }
+  ]
+}
+
+time | colors | saturation | brightness | transition time | effect | loop
+6:18 | morning blue
+7:16 | orange/yellow prison
+9:32 | attick white-x2/red
+12:20 | yellow hallway camera flashes
+14:38 | yellow/green/white bloody scene factory 
+17:04 | yellow/white/green/blue
+18:50 | white/lightblue
+21:31 | white/blue/purple
+23:23 | yellow/blue/red
+27:38 | offwhite/burgundy/blue
+30:10 | white/lightblue/primaryblue | high | med-low
+32:28 | yellow/white/green | med | med
+35:11 | peachpuff/red | med-high | low
+37:36 | white/green/brown | med | med
+39:47 | gold/yellow | high | med | harsh change flicker yellow
+43:10 | blue/white | med | low | harsh change flicker blue
+44:30 | | | | flickering stops
+45:15 | white/blue/green | high | 
+46:03 | black/white/lightblue/lightgreen | high | low
+46:50 | red
+47:28 | blue
+47:57 | gold
+48:30 | red/gold
+49:00 | blue/red/gold flickering
+

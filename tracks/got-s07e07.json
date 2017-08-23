@@ -1,0 +1,35 @@
+{
+  "entries": [
+    {
+      "start_time": "00:00",
+      "hue": "lightblue",
+      "sat": 
+      "lights": [{
+        "name": "L1",
+        "hue": 150,
+        "bri": 140,
+        "sat": 100
+      }, {
+      }]
+    }
+  ]
+}
+
+EFFECT
+time | effect | duration (sec) | loop
+
+
+ENTRY
+time | colors | saturation | brightness | transition time
+
+00:00 | torches
+05:40 | white blue orange | 200 | 175 | 2000
+19:40 | torches
+22:15 | white orange | 200 | 130 | 3000
+24:40 | white grey lightblue | 200 | 130 | 3000
+29:02 | torches 1 min duration
+37:15 | darken 10%
+37:45 | darken 10%
+45:05 | green blue white | 200 | 150 | 2000
+46:19 | white lightblue lightgray
+66:10 | orange blue white | 200 | 140

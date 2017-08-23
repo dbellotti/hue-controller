@@ -1,0 +1,25 @@
+{
+  "entries": [
+    {
+      "start_time": "00:00",
+      "hue": "lightblue",
+      "sat": 
+      "lights": [{
+        "name": "L1",
+        "hue": 150,
+        "bri": 140,
+        "sat": 100
+      }, {
+      }]
+    }
+  ]
+}
+
+EFFECT
+time | effect | duration (sec) | loop
+
+
+ENTRY
+time | colors | saturation | brightness | transition time
+
+00:00  |  blue white yellow |
