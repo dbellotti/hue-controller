@@ -12,11 +12,11 @@ ul.nav .label {
 
 .page-header > h1,
 .page-header > p,
-.locations > p {
+.locations p {
   text-align: center;
 }
 
-.jumbotron {
+.jumbotron, .jumbotron div {
   display: -webkit-flex;
   display:         flex;
   -webkit-align-items: center;
@@ -26,7 +26,7 @@ ul.nav .label {
   flex-wrap: wrap;
 }
 
-form.select-scene {
+button {
   margin: 10px;
 }
 

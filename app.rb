@@ -1,16 +1,18 @@
 # app.rb
 require 'sinatra/base'
 require 'sinatra/config_file'
-require 'rack/flash'
+require 'sinatra/content_for'
 require 'hue'
 require 'json'
 require 'slim'
 require 'rack/session/redis'
+require 'rack/flash'
 
 require './services/hue_configurator'
 
 class HueStation < Sinatra::Base
   register Sinatra::ConfigFile
+  helpers Sinatra::ContentFor
   use Rack::Session::Redis, :redis_server => ENV['REDIS_URL']
   use Rack::Flash
 
@@ -18,7 +20,7 @@ class HueStation < Sinatra::Base
     config_file './config/westeros.yml'
 
     enable :logging
-    enable :sessions
+#    enable :sessions
 
     set :asset_version, Time.now.to_i
     set :public_folder, File.join(File.dirname(__FILE__), './public')
@@ -31,6 +33,12 @@ class HueStation < Sinatra::Base
 
   get '/' do
     slim :index
+  end
+
+  get '/elm' do
+    @user = "XKH4OkdMgXubydMRoiXyqEwwSmiy3RqBx74Hs-8L"
+    @bridge = "10.0.1.2"
+    slim :elm
   end
 
   post '/register_bridge' do
@@ -61,11 +69,13 @@ class HueStation < Sinatra::Base
       end
 
       puts "setting scene: #{light.name} with: #{setting}"
-      light.set_state(setting, setting[:transition_time].to_int)
+      light.set_state(setting, setting[:transitionTime].to_int)
     end
 
-    flash[:notice] = "Triggered #{params['scene']}"
-    redirect '/'
+    if not request.xhr?
+      flash[:notice] = "Triggered #{params['scene']}"
+      redirect '/'
+    end
   end
 
   post '/create_scene' do
@@ -75,9 +85,9 @@ class HueStation < Sinatra::Base
         {
           name: light['name'],
           hue: light['hue'],
-          saturation: light['saturation'],
-          brightness: light['brightness'],
-          transition_time: light['transition_time']
+          saturation: light['sat'],
+          brightness: light['bri'],
+          transition_time: light['transitiontime']
         }
       end
     })
