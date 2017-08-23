@@ -1,0 +1,21 @@
+WEBVTT FILE
+
+torches
+00:00:00.000 --> 00:05:40.000
+{
+  "lights": [
+    { "hue": 150, "bri": 140, "sat": 100, "name": "Living Room 1" },
+    { "hue": 150, "bri": 140, "sat": 100, "name": "Living Room 2" },
+    { "hue": 150, "bri": 140, "sat": 100, "name": "Door" },
+  }]
+}
+
+beach
+00:05:40.000 ---> 00:19:40.000
+{
+  "lights": [
+    { "hue": 150, "bri": 140, "sat": 100, "name": "Living Room 1" },
+    { "hue": 150, "bri": 140, "sat": 100, "name": "Living Room 2" },
+    { "hue": 150, "bri": 140, "sat": 100, "name": "Door" },
+  }]
+}
