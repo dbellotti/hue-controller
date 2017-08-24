@@ -1,51 +1,39 @@
-nav class="navbar navbar-inverse navbar-fixed-top"
-  div class="container"
-    div class="navbar-header"
-      button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"
-        span class="sr-only" Toggle navigation
-        span class="icon-bar"
-        span class="icon-bar"
-        span class="icon-bar"
-      a class="navbar-brand" href="/" Game of Hues
-    div id="navbar" class="collapse navbar-collapse"
-      ul class="nav navbar-nav"
-        li class="active"
-          a href="/elm" Elm Version
-        - if session[:lights]
-          li
-            a href="/party_time" PartyTime
-        /li
-          a href="/configure" Configure
-        li
-          - if flash[:notice]
-            span class="label label-default"
-              = flash[:notice]
+- content_for :head_javascript_include
+  script src="/light-effects.js?v=#{@asset_version}"
+  script src="/light-schedules.js?v=#{@asset_version}"
+
+== slim :navbar
 
 div class="container"
   div class="page-header"
-    h1 Game of Hues
+  - if session[:lights].nil?
+    h1 Lord of Lights
     p class="lead"
       | Winter is here, but the Lord of Light will deliver us from darkness.
       br
       | Use the tools bestowed upon you to fulfill your destiny and save the world from winter.
 
-  div class="jumbotron locations"
-    - if session[:lights].nil?
+    div class="jumbotron locations"
       p
         | You need to register your Hue base station by pressing
         | the button on the top then clicking the 'Register Base Station'
         | button below.
       form class="register-bridge" action="/register_bridge" method="POST"
-        button type="submit" class="btn btn-lg btn-info" Register Base Station
-    - else
+        button type="submit" class="btn btn-lg btn-primary" Register Base Station
+  - else
+    div class="jumbotron locations"
       - @lighting_scenes.each do |scene|
         form class="select-scene" action="/select_scene" method="POST"
-          button name="scene" value=scene[:name] title=scene[:settings] type="submit" class="btn btn-lg" = scene[:name]
+          button name="scene" value=scene[:name] title=scene[:settings] type="submit" class="btn btn-lg btn-secondary" = scene[:name]
 
-      button onClick="episode3();" class="btn btn-lg btn-info" Trigger Episode 3
-      button onClick="episode4();" class="btn btn-lg btn-info" Trigger Episode 4
-      button onClick="storm();" class="btn btn-lg btn-warning" The Storm
+    div class="jumbotron locations"
+      button onClick="storm();" class="btn btn-lg btn-warning" Lightning
       button onClick="dungeon();" class="btn btn-lg btn-warning" Dungeon
+      button onClick="police();" class="btn btn-lg btn-warning" Police
+
+    div class="jumbotron locations"
+      button onClick="episode3();" class="btn btn-lg btn-primary" GoT s07e03
+      button onClick="episode4();" class="btn btn-lg btn-primary" GoT s07e04
 
     /div class="main"
       h2 Add Scene
@@ -79,133 +67,3 @@ div class="container"
         div class="form-group"
           div class="col-sm-offset-4 col-sm-8"
             button type="submit" class="btn btn-default" Create Scene
-
-  javascript:
-    var changeScene = function(scene) {
-      console.log("Changing Scene: " + scene);
-
-      $.post("/select_scene", { scene: scene } );
-    };
-
-    var episode3 = function() {
-        setTimeout(function () { changeScene("The Eyrie");     }, 1000 * 0   );
-        setTimeout(function () { changeScene("Castle Black");  }, 1000 * 600 );
-        setTimeout(function () { changeScene("Castle Black");  }, 1000 * 990 );
-        setTimeout(function () { changeScene("Highgarden");    }, 1000 * 1230);
-        setTimeout(function () { changeScene("Casterly Rock"); }, 1000 * 1270);
-        setTimeout(function () { changeScene("Casterly Rock"); }, 1000 * 1360);
-        setTimeout(function () { changeScene("Torches");       }, 1000 * 1520);
-        setTimeout(function () { changeScene("Torches");       }, 1000 * 1800);
-        setTimeout(function () { changeScene("Riverrun");      }, 1000 * 1855);
-        setTimeout(function () { changeScene("Highgarden");    }, 1000 * 2065);
-        setTimeout(function () { changeScene("The Eyrie");     }, 1000 * 2300);
-        setTimeout(function () { changeScene("Highgarden");    }, 1000 * 2425);
-        setTimeout(function () { changeScene("Castle Black");  }, 1000 * 2520);
-        setTimeout(function () { changeScene("Castle Black");  }, 1000 * 2730);
-        setTimeout(function () { changeScene("Highgarden");    }, 1000 * 2850);
-        setTimeout(function () { changeScene("The Eyrie");     }, 1000 * 3000);
-        setTimeout(function () { changeScene("The Eyrie");     }, 1000 * 3110);
-        setTimeout(function () { changeScene("Casterly Rock"); }, 1000 * 3170);
-        setTimeout(function () { changeScene("The Eyrie");     }, 1000 * 3215);
-        setTimeout(function () { changeScene("Torches");       }, 1000 * 3253);
-        setTimeout(function () { changeScene("Highgarden");    }, 1000 * 3375);
-    };
-
-    var episode4 = function() {
-        setTimeout(function () { changeScene("Highgarden");   }, 1000 * 0   );
-        setTimeout(function () { changeScene("Kings Landing");}, 1000 * 600 );
-        setTimeout(function () { changeScene("Torches");      }, 1000 * 990 );
-        setTimeout(function () { changeScene("Castle Black"); }, 1000 * 1230);
-        setTimeout(function () { changeScene("Torches");      }, 1000 * 1270);
-        setTimeout(function () { changeScene("Dragonstone");  }, 1000 * 1360);
-        setTimeout(function () { changeScene("Winterfell");   }, 1000 * 1520);
-        setTimeout(function () { changeScene("Dragonstone");  }, 1000 * 1800);
-        setTimeout(function () { changeScene("Torches");      }, 1000 * 1855);
-        setTimeout(function () { changeScene("The Eyrie");    }, 1000 * 2065);
-        setTimeout(function () { changeScene("Riverrun");     }, 1000 * 2300);
-        setTimeout(function () { changeScene("Winterfell");   }, 1000 * 2425);
-        setTimeout(function () { changeScene("Winterfell");   }, 1000 * 2520);
-        setTimeout(function () { changeScene("Castle Black"); }, 1000 * 2730);
-        setTimeout(function () { changeScene("Castle Black"); }, 1000 * 2850);
-        setTimeout(function () { changeScene("The Eyrie");    }, 1000 * 3000);
-        setTimeout(function () { changeScene("Castle Black"); }, 1000 * 3110);
-        setTimeout(function () { changeScene("Highgarden");   }, 1000 * 3170);
-        setTimeout(function () { changeScene("Riverrun");     }, 1000 * 3215);
-        setTimeout(function () { changeScene("Riverrun");     }, 1000 * 3253);
-        setTimeout(function () { changeScene("Highgarden");   }, 1000 * 3375);
-    };
-
-    var flame1 = function() {
-      changeScene("Fire 1");
-      setTimeout(function(){}, 500);
-      changeScene("Torches");
-    }
-
-    var flame2 = function() {
-      changeScene("Fire 2");
-      setTimeout(function(){}, 500);
-      changeScene("Torches");
-    }
-
-
-    dungeonHarness = false;
-    var dungeon = function() {
-        commandQueue = [
-          flame1,
-          flame2
-        ]
-
-        iterations = 40
-        while (iterations > 0) {
-            i = getRandomInt(0, 1)
-            command = commandQueue.pop();
-            setTimeout(function(){}, 2000);
-            iterations--;
-        }
-    }
-
-    var storm = function() {
-        setTimeout(function () { changeScene("The Calm Before the Storm"); }, 1000 * 0);
-
-        lightningStrike(2);
-        lightningStrike(6);
-        lightningStrike(12);
-        lightningStrike(19);
-        lightningStrike(24);
-        lightningStrike(28);
-        lightningStrike(49);
-        lightningStrike(58);
-        lightningStrike(92);
-    }
-
-    function getRandomInt(min, max) {
-      return Math.floor(Math.random() * (max - min + 1) + min);
-    }
-
-    var singleDoorStrike = function(time_secs) {
-          setTimeout(function () { changeScene("Lighting");                  }, 1000 * time_secs);
-          setTimeout(function () { changeScene("The Calm Before the Storm"); }, 1000 * time_secs + 0.25);
-    }
-    var doubleDoorStrike = function(time_secs) {
-          setTimeout(function () { changeScene("Lighting");                  }, 1000 * time_secs);
-          calmTime = time_secs + Math.random() * 0.25;
-          setTimeout(function () { changeScene("The Calm Before the Storm"); }, 1000 * calmTime);
-          setTimeout(function () { changeScene("Lighting");                  }, 1000 * calmTime + 0.5);
-          setTimeout(function () { changeScene("The Calm Before the Storm"); }, 1000 * calmTime + 0.75);
-    }
-
-    var rippleStrike = function(time_secs) {
-          setTimeout(function () { changeScene("Lighting");                  }, 1000 * time_secs);
-          setTimeout(function () { changeScene("The Calm Before the Storm"); }, 1000 * time_secs + 0.25);
-    }
-
-    var lightningStrike = function(time_secs) {
-        var strikes = [
-          singleDoorStrike,
-          doubleDoorStrike,
-        ];
-        var i = getRandomInt(0, strikes.length - 1);
-
-        console.log("random value: %d", i);
-        strikes[i](time_secs);
-    }

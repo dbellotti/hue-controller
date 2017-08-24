@@ -95,7 +95,7 @@ scenes:
         hue: 45000
         sat: 255
         bri: 60
-        transitiontime: 0
+        transitiontime: 6
   - name: "Lighting"
     settings:
       - name: "Living Room 1"
