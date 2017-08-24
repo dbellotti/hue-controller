@@ -6,8 +6,7 @@ var episode3 = function() {
   setTimeout(function () { changeScene("Highgarden");    }, 1000 * 1230);
   setTimeout(function () { changeScene("Casterly Rock"); }, 1000 * 1270);
   setTimeout(function () { changeScene("Casterly Rock"); }, 1000 * 1360);
-  setTimeout(function () { changeScene("Torches");       }, 1000 * 1520);
-  setTimeout(function () { changeScene("Torches");       }, 1000 * 1800);
+  setTimeout(function () { torches()                     }, 1000 * 1520);
   setTimeout(function () { changeScene("Riverrun");      }, 1000 * 1855);
   setTimeout(function () { changeScene("Highgarden");    }, 1000 * 2065);
   setTimeout(function () { changeScene("The Eyrie");     }, 1000 * 2300);
@@ -19,7 +18,7 @@ var episode3 = function() {
   setTimeout(function () { changeScene("The Eyrie");     }, 1000 * 3110);
   setTimeout(function () { changeScene("Casterly Rock"); }, 1000 * 3170);
   setTimeout(function () { changeScene("The Eyrie");     }, 1000 * 3215);
-  setTimeout(function () { changeScene("Torches");       }, 1000 * 3253);
+  setTimeout(function () { torches()                     }, 1000 * 3253);
   setTimeout(function () { changeScene("Highgarden");    }, 1000 * 3375);
 };
 
@@ -27,13 +26,13 @@ var episode4 = function() {
   clearIntervals();
   setTimeout(function () { changeScene("Highgarden");   }, 1000 * 0   );
   setTimeout(function () { changeScene("Kings Landing");}, 1000 * 600 );
-  setTimeout(function () { changeScene("Torches");      }, 1000 * 990 );
+  setTimeout(function () { torches()                    }, 1000 * 990 );
   setTimeout(function () { changeScene("Castle Black"); }, 1000 * 1230);
-  setTimeout(function () { changeScene("Torches");      }, 1000 * 1270);
+  setTimeout(function () { torches()                    }, 1000 * 1270);
   setTimeout(function () { changeScene("Dragonstone");  }, 1000 * 1360);
   setTimeout(function () { changeScene("Winterfell");   }, 1000 * 1520);
   setTimeout(function () { changeScene("Dragonstone");  }, 1000 * 1800);
-  setTimeout(function () { changeScene("Torches");      }, 1000 * 1855);
+  setTimeout(function () { torches()                    }, 1000 * 1855);
   setTimeout(function () { changeScene("The Eyrie");    }, 1000 * 2065);
   setTimeout(function () { changeScene("Riverrun");     }, 1000 * 2300);
   setTimeout(function () { changeScene("Winterfell");   }, 1000 * 2425);

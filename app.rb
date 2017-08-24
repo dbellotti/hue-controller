@@ -41,6 +41,10 @@ class HueStation < Sinatra::Base
     slim :elm
   end
 
+  get '/configure' do
+    slim :configure
+  end
+
   post '/register_bridge' do
     session[:lights] = HueConfigurator.new(settings.lights).lights
 
