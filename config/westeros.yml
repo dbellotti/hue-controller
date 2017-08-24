@@ -11,7 +11,41 @@ lights:
   - name: "Front Door"
 
 scenes:
-  - name: "Torches"
+  - name: "Siren 1"
+    settings:
+      - name: "Living Room 1"
+        hue: 0
+        sat: 255
+        bri: 155
+        transitiontime: 2
+      - name: "Living Room 2"
+        hue: 46920
+        sat: 255
+        bri: 255
+        transitiontime: 2
+      - name: "Front Door"
+        hue: 0
+        sat: 255
+        bri: 155
+        transitiontime: 2
+  - name: "Siren 2"
+    settings:
+      - name: "Living Room 1"
+        hue: 46920
+        sat: 255
+        bri: 255
+        transitiontime: 2
+      - name: "Living Room 2"
+        hue: 0
+        sat: 255
+        bri: 155
+        transitiontime: 2
+      - name: "Front Door"
+        hue: 46920
+        sat: 255
+        bri: 255
+        transitiontime: 2
+  - name: "Fire Slow"
     settings:
       - name: "Living Room 1"
         hue: 0

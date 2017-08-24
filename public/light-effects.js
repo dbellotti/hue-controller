@@ -1,14 +1,27 @@
-var dungeon = function() {
+var police = function() {
+  clearIntervals();
+
+  let colors = ["Siren 1", "Siren 2"];
+  let cycle = function() {
+    let color = colors.pop();
+    changeScene(color);
+    colors.unshift(color);
+  }
+
+  window.setInterval(cycle, 500);
+}
+
+var torches = function() {
   clearIntervals();
 
   let flameOn = function() {
     let i = getRandomInt(0, 2)
     if ( i === 0 ) {
-      changeScene("Fire 1");
+      changeScene("Fire Slow");
     } else if ( i === 1 ){
-      changeScene("Fire 2");
+      changeScene("Fire 1");
     } else {
-      changeScene("Fire 3");
+      changeScene("Fire 2");
     }
   }
 
@@ -33,15 +46,6 @@ var storm = function() {
 
   let cycleLength = getRandomInt(0, 25000);
   window.setInterval(lightning, cycleLength)
-  //lightningStrike(2);
-  //lightningStrike(6);
-  //lightningStrike(12);
-  //lightningStrike(19);
-  //lightningStrike(24);
-  //lightningStrike(28);
-  //lightningStrike(49);
-  //lightningStrike(58);
-  //lightningStrike(92);
 }
 
 var singleDoorStrike = function(time_secs) {

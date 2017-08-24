@@ -1,5 +1,6 @@
-ul.nav .label {
-  line-height: 5;
+.nav-link > .alert {
+  padding: 0.25rem 0.5rem;
+  font-size: small;
 }
 
 .page-header {
@@ -20,6 +21,7 @@ ul.nav .label {
   -webkit-justify-content: center;
           justify-content: center;
   flex-wrap: wrap;
+  margin: 10px;
 }
 
 button {
