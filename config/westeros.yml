@@ -17,218 +17,218 @@ scenes:
         hue: 0
         sat: 255
         bri: 200
-        transitionTime: 50
+        transitiontime: 50
       - name: "Living Room 2"
         hue: 10000
         sat: 255
         bri: 155
-        transitionTime: 50
+        transitiontime: 50
       - name: "Front Door"
         hue: 7000
         sat: 255
         bri: 155
-        transitionTime: 70
+        transitiontime: 70
   - name: "Fire 1"
     settings:
       - name: "Living Room 1"
         hue: 0
         sat: 255
         bri: 200
-        transitionTime: 10
+        transitiontime: 5
       - name: "Living Room 2"
         hue: 10000
         sat: 255
         bri: 155
-        transitionTime: 10
+        transitiontime: 5
       - name: "Front Door"
         hue: 7000
         sat: 255
         bri: 155
-        transitionTime: 10
+        transitiontime: 5
   - name: "Fire 2"
     settings:
       - name: "Living Room 1"
         hue: 10000
         sat: 255
         bri: 155
-        transitionTime: 10
+        transitiontime: 5
       - name: "Living Room 2"
         hue: 0
         sat: 255
         bri: 200
-        transitionTime: 10
+        transitiontime: 5
       - name: "Front Door"
         hue: 7000
         sat: 255
         bri: 155
-        transitionTime: 10
+        transitiontime: 5
   - name: "Fire 3"
     settings:
       - name: "Living Room 1"
         hue: 0
         sat: 255
         bri: 200
-        transitionTime: 10
+        transitiontime: 5
       - name: "Living Room 2"
         hue: 7000
         sat: 255
         bri: 155
-        transitionTime: 10
+        transitiontime: 5
       - name: "Front Door"
         hue: 10000
         sat: 255
         bri: 155
-        transitionTime: 10
+        transitiontime: 5
   - name: "The Calm Before the Storm"
     settings:
       - name: "Living Room 1"
         hue: 48000
         sat: 255
         bri: 60
-        transitionTime: 4
+        transitiontime: 4
       - name: "Living Room 2"
         hue: 30000
         sat: 255
         bri: 60
-        transitionTime: 5
+        transitiontime: 5
       - name: "Front Door"
         hue: 45000
         sat: 255
         bri: 60
-        transitionTime: 0
+        transitiontime: 0
   - name: "Lighting"
     settings:
       - name: "Living Room 1"
         hue: 48000
         sat: 150
         bri: 100
-        transitionTime: 0
+        transitiontime: 0
       - name: "Living Room 2"
         hue: 34000
         sat: 200
         bri: 100
-        transitionTime: 0
+        transitiontime: 0
       - name: "Front Door"
         hue: 34000
         sat: 0
         bri: 255
-        transitionTime: 0
+        transitiontime: 0
   - name: "Castle Black"
     settings:
       - name: "Living Room 1"
         hue: 48000
         sat: 200
         bri: 100
-        transitionTime: 90
+        transitiontime: 90
       - name: "Living Room 2"
         hue: 34000
         sat: 255
         bri: 100
-        transitionTime: 70
+        transitiontime: 70
       - name: "Front Door"
         hue: 34000
         sat: 255
         bri: 150
-        transitionTime: 80
+        transitiontime: 80
   - name: "Winterfell"
     settings:
       - name: "Living Room 1"
         hue: 46920
         sat: 0
         bri: 100
-        transitionTime: 90
+        transitiontime: 90
       - name: "Living Room 2"
         hue: 46920
         sat: 255
         bri: 100
-        transitionTime: 70
+        transitiontime: 70
       - name: "Front Door"
         hue: 46920
         sat: 155
         bri: 50
-        transitionTime: 80
+        transitiontime: 80
   - name: "Kings Landing"
     settings:
       - name: "Living Room 1"
         hue: 5000
         sat: 255
         bri: 255
-        transitionTime: 80
+        transitiontime: 80
       - name: "Living Room 2"
         hue: 17000
         sat: 200
         bri: 255
-        transitionTime: 50
+        transitiontime: 50
       - name: "Front Door"
         hue: 10000
         sat: 255
         bri: 125
-        transitionTime: 70
+        transitiontime: 70
   - name: "Casterly Rock"
     settings:
       - name: "Living Room 1"
         hue: 17000
         sat: 255
         bri: 255
-        transitionTime: 50
+        transitiontime: 50
       - name: "Living Room 2"
         hue: 0
         sat: 255
         bri: 155
-        transitionTime: 90
+        transitiontime: 90
       - name: "Front Door"
         hue: 20000
         sat: 255
         bri: 50
-        transitionTime: 70
+        transitiontime: 70
   - name: "Highgarden"
     settings:
       - name: "Living Room 1"
         hue: 46920
         sat: 255
         bri: 200
-        transitionTime: 80
+        transitiontime: 80
       - name: "Living Room 2"
         hue: 27000
         sat: 255
         bri: 200
-        transitionTime: 50
+        transitiontime: 50
       - name: "Front Door"
         hue: 20000
         sat: 255
         bri: 125
-        transitionTime: 70
+        transitiontime: 70
   - name: "Riverrun"
     settings:
       - name: "Living Room 1"
         hue: 0
         sat: 100
         bri: 100
-        transitionTime: 80
+        transitiontime: 80
       - name: "Living Room 2"
         hue: 34000 
         sat: 150
         bri: 100
-        transitionTime: 50
+        transitiontime: 50
       - name: "Front Door"
         hue: 50000
         sat: 155
         bri: 125
-        transitionTime: 60
+        transitiontime: 60
   - name: "The Eyrie"
     settings:
       - name: "Living Room 1"
         hue: 8000
         sat: 200
         bri: 200
-        transitionTime: 80
+        transitiontime: 80
       - name: "Living Room 2"
         hue: 50000
         sat: 100
         bri: 100
-        transitionTime: 50
+        transitiontime: 50
       - name: "Front Door"
         hue: 50000
         sat: 155
         bri: 125
-        transitionTime: 70
+        transitiontime: 70

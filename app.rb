@@ -69,7 +69,7 @@ class HueStation < Sinatra::Base
       end
 
       puts "setting scene: #{light.name} with: #{setting}"
-      light.set_state(setting, setting[:transitionTime].to_int)
+      light.set_state(setting, setting[:transitiontime].to_int)
     end
 
     if not request.xhr?
@@ -87,7 +87,7 @@ class HueStation < Sinatra::Base
           hue: light['hue'],
           saturation: light['sat'],
           brightness: light['bri'],
-          transition_time: light['transitiontime']
+          transition_time: light['transitionTime']
         }
       end
     })
