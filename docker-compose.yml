@@ -2,6 +2,9 @@ version: '3.0'
 services:
   web:
     build: .
+    depends_on:
+      - elm
+      - redis
     command: bundle exec rackup -o 0.0.0.0 -p 9292
     volumes:
       - .:/app
@@ -12,5 +15,13 @@ services:
       - redis
     environment:
       - REDIS_URL=redis://redis:6379
+
+  elm:
+    image: codesimple/elm:0.18
+    command: make src/elm/Main.elm --yes --output public/elm.js
+    volumes:
+      - .:/app
+    working_dir: /app
+
   redis:
     image: redis
